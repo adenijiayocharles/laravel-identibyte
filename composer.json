@@ -1,0 +1,25 @@
+{
+    "name": "adenijiayocharles/identibyte-laravel",
+    "description": "Laravel wrapper for the Identibyte email verification service",
+    "authors": [
+        {
+            "name": "Adeniji Charles",
+            "email": "adenijiayocharles@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adenijiayocharles\\Identibyte\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Adenijiayocharles\\Identibyte\\IdentibyteServiceProvider"
+            ]
+        }
+    }
+}
