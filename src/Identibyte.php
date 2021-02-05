@@ -12,14 +12,10 @@ class Identibyte
         $client = new Client([
             'base_uri' => 'https://identibyte.com'
         ]);
-        
-        $url = "/check/" . $email;
+        $key = config('identibyte.key');
+        $url = "/check/" . $email."?api_token=".$key;
         try {
-            $response = $client->request(
-                'get', $url, [
-                    'auth' > [config('identibyte.key')]
-                ]
-            );
+            $response = $client->request('get', $url);
             return response()->json([
                 'code' => $response->getStatusCode(),
                 "body" => $response->getBody()->getContents()
