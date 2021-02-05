@@ -12,10 +12,7 @@ class Identibyte
         $key = config('identibyte.key');
 
         if(is_null($key)){
-            if(!is_string($email)) {
-                throw new \InvalidArgumentException('Please publish the config and add your Identibyte api key to your .env');
-            }
-
+            throw new \Exception('Please publish the config and add your Identibyte api key to your .env');
         }
 
         if(!is_string($email)) {
