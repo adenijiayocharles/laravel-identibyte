@@ -7,8 +7,16 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class Identibyte
 {
-    public static function check(string $email)
+    public static function check($email = null)
     {
+        if(!is_string($email)) {
+            throw new \InvalidArgumentException('Invalid argument type. Argument must be of type string');
+        }
+
+        if(is_null($email)){
+            throw new \InvalidArgumentException('Method requires an email or domain name to continue');
+        }
+
         $client = new Client([
             'base_uri' => 'https://identibyte.com'
         ]);
