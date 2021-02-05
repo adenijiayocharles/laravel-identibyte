@@ -9,6 +9,15 @@ class Identibyte
 {
     public static function check($email = null)
     {
+        $key = config('identibyte.key');
+
+        if(is_null($key)){
+            if(!is_string($email)) {
+                throw new \InvalidArgumentException('Please publish the config and add your Identibyte api key to your .env');
+            }
+
+        }
+
         if(!is_string($email)) {
             throw new \InvalidArgumentException('Invalid argument type. Argument must be of type string');
         }
@@ -20,7 +29,7 @@ class Identibyte
         $client = new Client([
             'base_uri' => 'https://identibyte.com'
         ]);
-        $key = config('identibyte.key');
+
         $url = "/check/" . $email."?api_token=".$key;
         try {
             $response = $client->request('get', $url);
