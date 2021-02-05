@@ -1,6 +1,8 @@
 {
     "name": "adenijiayocharles/identibyte-laravel",
-    "description": "Laravel wrapper for the Identibyte email verification service",
+    "description": "Laravel wrapper for the Identibyte.com API",
+    "keywords": ["php", "laravel", "identibyte"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Adeniji Charles",
