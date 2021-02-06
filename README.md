@@ -3,7 +3,7 @@ This is a wrapper for the [Identibyte](https://identibyte.com/) API. Iddentibyte
 
 ## Installation
 * Get an api key from [here](https://identibyte.com/)
-* Run `composer require adenijiayocharles/identibyte-laravel` from your Laravel application root. 
+* Run `composer require adenijiayocharles/identibyte-laravel:1.0.2` from your Laravel application root. 
 * Add the below to the bottom of your `.env`
 ```php
 IDENTIBYTE_KEY={your-api-key}
