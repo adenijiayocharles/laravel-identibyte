@@ -31,8 +31,8 @@ class Identibyte
         try {
             $response = $client->request('get', $url);
             return response()->json([
-                'code' => $response->getStatusCode(),
-                "body" => $response->getBody()->getContents()
+                'status_code' => $response->getStatusCode(),
+                "body" => json_decode($response->getBody()->getContents(), true)
             ]);
         } catch (GuzzleException $e) {
             return response()->json([
