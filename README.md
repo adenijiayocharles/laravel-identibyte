@@ -10,7 +10,7 @@ IDENTIBYTE_KEY={your-api-key}
 ```
 * Publish the config file from the package by running
 ```bash
-php artisan vendor:publish --provider="Adenijiayocharles\Identibyte\IdentibyteServiceProvider"
+php artisan vendor:publish --provider='Adenijiayocharles\Identibyte\IdentibyteServiceProvider'
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ use Adenijiayocharles\Identibyte\Identibyte;
 class TestController extends Controller
 {
     public function test() {
-        return Identibyte::check("test@email.com");
+        return Identibyte::check('test@email.com');
     }
 }
 ```
