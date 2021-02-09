@@ -14,13 +14,7 @@ class Identibyte
      */
     public static function check($email = null)
     {
-        if (!is_string($email)) {
-            throw new \InvalidArgumentException('Invalid argument type. Argument must be of type string');
-        }
-
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('Method requires an email or domain name to continue');
-        }
+        self::checkData($email);
         return self::makeRequest($email);
     }
 
@@ -29,10 +23,28 @@ class Identibyte
      * @param   [string]$email  [Email address to be checked]
      * @return  [string]          [false is email is not disposable and true if it is a disposable email]
      */
-    public static function isDisposableEmail($email)
+    public static function isDisposableEmail($email = null)
     {
+        self::checkData($email);
         $response = self::makeRequest($email);
         return $response['email']['disposable'] ? 'true' : 'false';
+    }
+
+    private static function checkData($data = null)
+    {
+        $key = config('identibyte.key');
+
+        if (is_null($key)) {
+            throw new \Exception('Please publish the config and add your Identibyte api key to your .env');
+        }
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('Method requires an email or domain name to continue');
+        }
+
+        if (!is_string($data)) {
+            throw new \InvalidArgumentException('Invalid argument type. Argument must be of type string');
+        }
     }
 
     /**
@@ -42,12 +54,6 @@ class Identibyte
      */
     private static function makeRequest($data)
     {
-        $key = config('identibyte.key');
-
-        if (is_null($key)) {
-            throw new \Exception('Please publish the config and add your Identibyte api key to your .env');
-        }
-
         try {
             $client = new Client([
                 'base_uri' => 'https://identibyte.com'
