@@ -14,7 +14,7 @@ php artisan vendor:publish --provider='Adenijiayocharles\Identibyte\IdentibyteSe
 ```
 
 ## Usage
-To check if an email is a disposable email or not, see the example below
+To check if an email is a disposable email or not, see the examples below
 ```php
 namespace App\Http\Controllers;
 
@@ -22,8 +22,14 @@ use Adenijiayocharles\Identibyte\Identibyte;
 
 class TestController extends Controller
 {
+    // returns the whole response from identibye
     public function test() {
         return Identibyte::check('test@email.com');
+    }
+
+    // returns true if email is disposable and false if not
+    public function checkEmail() {
+        return Identibyte::isDisposableEmail('test@email.com');
     }
 }
 ```
